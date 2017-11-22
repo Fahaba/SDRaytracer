@@ -1,7 +1,6 @@
-
-.iml
-.xml
-.class
-.json
-.sqlite
-.suo
+*.class
+*.iml
+*.sqlite
+*.json
+*.xml
+*.suo
