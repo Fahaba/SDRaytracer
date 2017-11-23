@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Triangle {
-    public Vec3D p1, p2, p3;
+    public Vec3D p1;
+    public Vec3D p2;
+    public Vec3D p3;
     public RGB color;
     public Vec3D normal;
     float shininess;
@@ -16,8 +18,8 @@ public class Triangle {
         p3 = pp3;
         color = col;
         shininess = sh;
-        Vec3D e1 = p2.minus(p1),
-                e2 = p3.minus(p1);
+        Vec3D e1 = p2.minus(p1);
+        Vec3D e2 = p3.minus(p1);
         normal = e1.cross(e2);
         normal.normalize();
     }
