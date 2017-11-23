@@ -1,3 +1,8 @@
+package Task;
+
+import Color.RGB;
+import Geometrics.Ray;
+
 import java.util.concurrent.Callable;
 
 class RaytraceTask implements Callable {

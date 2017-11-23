@@ -1,3 +1,6 @@
+package Geometrics;
+import Task.SDRaytracer;
+
 class IPoint {
     final static float epsilon = 0.0001f;
     Triangle triangle;

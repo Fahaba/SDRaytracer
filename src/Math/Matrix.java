@@ -1,6 +1,11 @@
+package Math;
+
+import Geometrics.Triangle;
+import Geometrics.Vec3D;
+
 import java.util.List;
 
-class Matrix {
+public class Matrix {
     float val[][] = new float[4][4];
 
     Matrix() {
@@ -10,7 +15,7 @@ class Matrix {
         val = vs;
     }
 
-    void print() {
+    public void print() {
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
                 System.out.print(" " + (val[i][j] + "       ").substring(0, 8));
@@ -20,7 +25,7 @@ class Matrix {
     }
 
 
-    Matrix mult(Matrix m) {
+    public Matrix mult(Matrix m) {
         Matrix r = new Matrix();
         for (int i = 0; i < 4; i++)
             for (int j = 0; j < 4; j++) {
@@ -36,7 +41,7 @@ class Matrix {
                 val[1][0] * v.x + val[1][1] * v.y + val[1][2] * v.z + val[1][3] * v.w,
                 val[2][0] * v.x + val[2][1] * v.y + val[2][2] * v.z + val[2][3] * v.w,
                 val[3][0] * v.x + val[3][1] * v.y + val[3][2] * v.z + val[3][3] * v.w);
-        //return new Vec3D(temp.x/temp.w,temp.y/temp.w,temp.z/temp.w,1);
+        //return new Geometrics.Vec3D(temp.x/temp.w,temp.y/temp.w,temp.z/temp.w,1);
         temp.x = temp.x / temp.w;
         temp.y = temp.y / temp.w;
         temp.z = temp.z / temp.w;
@@ -52,7 +57,7 @@ class Matrix {
                 {0, 0, 0, 1}});
     }
 
-    static Matrix createXRotation(float angle) {
+    public static Matrix createXRotation(float angle) {
         return new Matrix(new float[][]{
                 {1, 0, 0, 0},
                 {0, (float) Math.cos(angle), (float) -Math.sin(angle), 0},
@@ -60,7 +65,7 @@ class Matrix {
                 {0, 0, 0, 1}});
     }
 
-    static Matrix createYRotation(float angle) {
+    public static Matrix createYRotation(float angle) {
         return new Matrix(new float[][]{
                 {(float) Math.cos(angle), 0, (float) Math.sin(angle), 0},
                 {0, 1, 0, 0},
@@ -68,7 +73,7 @@ class Matrix {
                 {0, 0, 0, 1}});
     }
 
-    static Matrix createZRotation(float angle) {
+    public static Matrix createZRotation(float angle) {
         return new Matrix(new float[][]{
                 {(float) Math.cos(angle), (float) -Math.sin(angle), 0, 0},
                 {(float) Math.sin(angle), (float) Math.cos(angle), 0, 0},
@@ -76,7 +81,7 @@ class Matrix {
                 {0, 0, 0, 1}});
     }
 
-    static Matrix createTranslation(float dx, float dy, float dz) {
+    public static Matrix createTranslation(float dx, float dy, float dz) {
         return new Matrix(new float[][]{
                 {1, 0, 0, dx},
                 {0, 1, 0, dy},
@@ -84,7 +89,7 @@ class Matrix {
                 {0, 0, 0, 1}});
     }
 
-    void apply(List<Triangle> ts) {
+    public void apply(List<Triangle> ts) {
         for (Triangle t : ts) {
             t.p1 = this.mult(t.p1);
             t.p2 = this.mult(t.p2);

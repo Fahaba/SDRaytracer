@@ -1,3 +1,6 @@
+package Geometrics;
+import Color.RGB;
+
 class Light {
     RGB color;
     Vec3D position;

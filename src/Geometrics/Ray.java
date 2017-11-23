@@ -1,3 +1,7 @@
+package Geometrics;
+import Color.RGB;
+import Task.SDRaytracer;
+
 public class Ray {
 
     static RGB ambient_color = new RGB(0.01f, 0.01f, 0.01f);
@@ -8,18 +12,18 @@ public class Ray {
     Light lights[] = new Light[]{mainLight
             , new Light(new Vec3D(100, 200, 300), new RGB(0.5f, 0, 0.0f))
             , new Light(new Vec3D(-100, 200, 300), new RGB(0.0f, 0, 0.5f))
-            //,new Light(new Vec3D(-100,0,0), new RGB(0.0f,0.8f,0.0f))
+            //,new Geometrics.Light(new Vec3D(-100,0,0), new Color.RGB(0.0f,0.8f,0.0f))
     };
 
-    void setStart(float x, float y, float z) {
+    public void setStart(float x, float y, float z) {
         start = new Vec3D(x, y, z);
     }
 
-    void setDir(float dx, float dy, float dz) {
+    public void setDir(float dx, float dy, float dz) {
         dir = new Vec3D(dx, dy, dz);
     }
 
-    void normalize() {
+    public void normalize() {
         dir.normalize();
     }
 
@@ -75,7 +79,7 @@ public class Ray {
 
     static RGB black = new RGB(0.0f, 0.0f, 0.0f);
 
-    RGB rayTrace(int rec) {
+    public RGB rayTrace(int rec) {
         if (rec > SDRaytracer.maxRec) return black;
         IPoint ip = IPoint.hitObject(this);  // (ray, p, n, triangle);
         if (ip.dist > IPoint.epsilon)
