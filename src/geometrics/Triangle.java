@@ -1,6 +1,7 @@
 package geometrics;
 import color.RGB;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Triangle {
@@ -21,7 +22,9 @@ public class Triangle {
         normal.normalize();
     }
 
-    public static void addCube(List<Triangle> triangles, int x, int y, int z, int w, int h, int d, RGB c, float sh) {  //front
+    public static List<Triangle> buildCube(int x, int y, int z, int w, int h, int d, RGB c, float sh) {  //front
+        List<Triangle> triangles = new ArrayList<>();
+
         triangles.add(new Triangle(new Vec3D(x, y, z), new Vec3D(x + w, y, z), new Vec3D(x, y + h, z), c, sh));
         triangles.add(new Triangle(new Vec3D(x + w, y, z), new Vec3D(x + w, y + h, z), new Vec3D(x, y + h, z), c, sh));
         //left
@@ -40,6 +43,7 @@ public class Triangle {
         triangles.add(new Triangle(new Vec3D(x, y, z + d), new Vec3D(x, y + h, z + d), new Vec3D(x + w, y, z + d), c, sh));
         triangles.add(new Triangle(new Vec3D(x + w, y, z + d), new Vec3D(x, y + h, z + d), new Vec3D(x + w, y + h, z + d), c, sh));
 
+        return triangles;
     }
 
 }
