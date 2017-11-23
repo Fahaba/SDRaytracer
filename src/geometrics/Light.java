@@ -1,5 +1,5 @@
-package Geometrics;
-import Color.RGB;
+package geometrics;
+import color.RGB;
 
 class Light {
     RGB color;

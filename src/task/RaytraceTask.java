@@ -1,7 +1,7 @@
-package Task;
+package task;
 
-import Color.RGB;
-import Geometrics.Ray;
+import color.RGB;
+import geometrics.Ray;
 
 import java.util.concurrent.Callable;
 

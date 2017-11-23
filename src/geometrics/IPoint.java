@@ -1,8 +1,8 @@
-package Geometrics;
-import Task.SDRaytracer;
+package geometrics;
+import task.SDRaytracer;
 
 class IPoint {
-    final static float epsilon = 0.0001f;
+    final static float EPSILON = 0.0001f;
     Triangle triangle;
     Vec3D vec;
     float dist;

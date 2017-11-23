@@ -1,12 +1,12 @@
-package Math;
+package math;
 
-import Geometrics.Triangle;
-import Geometrics.Vec3D;
+import geometrics.Triangle;
+import geometrics.Vec3D;
 
 import java.util.List;
 
 public class Matrix {
-    float val[][] = new float[4][4];
+    float[][] val = new float[4][4];
 
     Matrix() {
     }
@@ -41,7 +41,7 @@ public class Matrix {
                 val[1][0] * v.x + val[1][1] * v.y + val[1][2] * v.z + val[1][3] * v.w,
                 val[2][0] * v.x + val[2][1] * v.y + val[2][2] * v.z + val[2][3] * v.w,
                 val[3][0] * v.x + val[3][1] * v.y + val[3][2] * v.z + val[3][3] * v.w);
-        //return new Geometrics.Vec3D(temp.x/temp.w,temp.y/temp.w,temp.z/temp.w,1);
+
         temp.x = temp.x / temp.w;
         temp.y = temp.y / temp.w;
         temp.z = temp.z / temp.w;

@@ -1,6 +1,6 @@
-package Geometrics;
-import Color.RGB;
-import Task.SDRaytracer;
+package geometrics;
+import color.RGB;
+import task.SDRaytracer;
 
 public class Ray {
 
@@ -9,10 +9,10 @@ public class Ray {
     Vec3D dir = new Vec3D(0, 0, 0);
 
     Light mainLight = new Light(new Vec3D(0, 100, 0), new RGB(0.1f, 0.1f, 0.1f));
-    Light lights[] = new Light[]{mainLight
+    Light[] lights = new Light[]{mainLight
             , new Light(new Vec3D(100, 200, 300), new RGB(0.5f, 0, 0.0f))
             , new Light(new Vec3D(-100, 200, 300), new RGB(0.0f, 0, 0.5f))
-            //,new Geometrics.Light(new Vec3D(-100,0,0), new Color.RGB(0.0f,0.8f,0.0f))
+            //,new geometrics.Light(new Vec3D(-100,0,0), new color.RGB(0.0f,0.8f,0.0f))
     };
 
     public void setStart(float x, float y, float z) {
@@ -29,7 +29,7 @@ public class Ray {
 
     // see M�ller&Haines, page 305
     IPoint intersect(Triangle t) {
-        float epsilon = IPoint.epsilon;
+        float epsilon = IPoint.EPSILON;
         Vec3D e1 = t.p2.minus(t.p1);
         Vec3D e2 = t.p3.minus(t.p1);
         Vec3D p = dir.cross(e2);
@@ -59,7 +59,7 @@ public class Ray {
             shadow_ray.dir = light.position.minus(point).mult(-1);
             shadow_ray.dir.normalize();
             IPoint ip2 = IPoint.hitObject(shadow_ray);
-            if (ip2.dist < IPoint.epsilon) {
+            if (ip2.dist < IPoint.EPSILON) {
                 float ratio = Math.max(0, shadow_ray.dir.dot(triangle.normal));
                 color = RGB.addColors(color, light.color, ratio);
             }
@@ -81,7 +81,7 @@ public class Ray {
     public RGB rayTrace(int rec) {
         if (rec > SDRaytracer.maxRec) return black;
         IPoint ip = IPoint.hitObject(this);
-        if (ip.dist > IPoint.epsilon)
+        if (ip.dist > IPoint.EPSILON)
             return lighting(this, ip, rec);
         else
             return black;

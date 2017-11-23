@@ -1,8 +1,8 @@
-package Task;
+package task;
 
-import Color.RGB;
-import Geometrics.*;
-import Math.Matrix;
+import color.RGB;
+import geometrics.*;
+import math.Matrix;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -27,8 +27,8 @@ import java.util.concurrent.Future;
 public class SDRaytracer extends JFrame {
     private static final long serialVersionUID = 1L;
     private boolean profiling = false;
-    final int width = 1000;
-    final int height = 1000;
+    static final int width = 1000;
+    static final int height = 1000;
 
     private Future[] futureList = new Future[width];
     private final int nrOfProcessors = Runtime.getRuntime().availableProcessors();
@@ -103,8 +103,7 @@ public class SDRaytracer extends JFrame {
             try {
                 RGB[] col = (RGB[]) futureList[i].get();
                 System.arraycopy(col, 0, image[i], 0, height);
-            } catch (InterruptedException e) {
-            } catch (ExecutionException e) {
+            } catch (InterruptedException|ExecutionException e) {
             }
         }
     }
