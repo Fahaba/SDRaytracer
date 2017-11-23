@@ -18,7 +18,7 @@ class IPoint {
         float idist = -1;
         for (Triangle t : SDRaytracer.triangles) {
             IPoint ip = ray.intersect(t);
-            if (ip.dist != -1 && (idist == -1) || (ip.dist < idist)) { // save that intersection
+            if (ip.dist != -1 && ((idist == -1) || (ip.dist < idist) )) { // save that intersection
                 idist = ip.dist;
                 isect.vec = ip.vec;
                 isect.dist = ip.dist;
