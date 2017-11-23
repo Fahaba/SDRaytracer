@@ -4,12 +4,12 @@ import Task.SDRaytracer;
 class IPoint {
     final static float epsilon = 0.0001f;
     Triangle triangle;
-    Vec3D ipoint;
+    Vec3D vec;
     float dist;
 
     IPoint(Triangle tt, Vec3D ip, float d) {
         triangle = tt;
-        ipoint = ip;
+        vec = ip;
         dist = d;
     }
 
@@ -18,13 +18,12 @@ class IPoint {
         float idist = -1;
         for (Triangle t : SDRaytracer.triangles) {
             IPoint ip = ray.intersect(t);
-            if (ip.dist != -1)
-                if ((idist == -1) || (ip.dist < idist)) { // save that intersection
-                    idist = ip.dist;
-                    isect.ipoint = ip.ipoint;
-                    isect.dist = ip.dist;
-                    isect.triangle = t;
-                }
+            if (ip.dist != -1 && (idist == -1) || (ip.dist < idist)) { // save that intersection
+                idist = ip.dist;
+                isect.vec = ip.vec;
+                isect.dist = ip.dist;
+                isect.triangle = t;
+            }
         }
         return isect;  // return intersection point and normal
     }

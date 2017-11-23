@@ -132,6 +132,7 @@ public class SDRaytracer extends JFrame {
         Container contentPane = this.getContentPane();
         contentPane.setLayout(new BorderLayout());
         JPanel area = new JPanel() {
+            @Override
             public void paint(Graphics g) {
                 System.out.println("fovx=" + fovx + ", fovy=" + fovy + ", xangle=" + x_angle_factor + ", yangle=" + y_angle_factor);
                 if (image == null) return;
@@ -145,6 +146,7 @@ public class SDRaytracer extends JFrame {
         };
 
         addKeyListener(new KeyAdapter() {
+            @Override
             public void keyPressed(KeyEvent e) {
                 boolean redraw;
                 switch (e.getKeyCode()) {

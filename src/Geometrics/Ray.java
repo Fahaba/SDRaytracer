@@ -46,12 +46,11 @@ public class Ray {
         float dist = f * e2.dot(q);
         if (dist < epsilon) return new IPoint(null, null, -1);
         Vec3D ip = t.p1.mult(1 - u - v).add(t.p2.mult(u)).add(t.p3.mult(v));
-        //DEBUG.debug("Intersection point: "+ip.x+","+ip.y+","+ip.z);
         return new IPoint(t, ip, dist);
     }
 
     RGB lighting(Ray ray, IPoint ip, int rec) {
-        Vec3D point = ip.ipoint;
+        Vec3D point = ip.vec;
         Triangle triangle = ip.triangle;
         RGB color = RGB.addColors(triangle.color, ambient_color, 1);
         Ray shadow_ray = new Ray();
@@ -81,7 +80,7 @@ public class Ray {
 
     public RGB rayTrace(int rec) {
         if (rec > SDRaytracer.maxRec) return black;
-        IPoint ip = IPoint.hitObject(this);  // (ray, p, n, triangle);
+        IPoint ip = IPoint.hitObject(this);
         if (ip.dist > IPoint.epsilon)
             return lighting(this, ip, rec);
         else
