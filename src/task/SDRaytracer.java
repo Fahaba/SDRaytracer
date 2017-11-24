@@ -150,16 +150,16 @@ public class SDRaytracer extends JFrame {
                 boolean redraw = true;
                 switch (e.getKeyCode()) {
                     case KeyEvent.VK_DOWN:
-                        SDRaytracer.x_angle_factor--;
+                        x_angle_factor--;
                         break;
                     case KeyEvent.VK_UP:
-                        SDRaytracer.x_angle_factor++;
+                        x_angle_factor++;
                         break;
                     case KeyEvent.VK_LEFT:
-                        SDRaytracer.y_angle_factor--;
+                        y_angle_factor--;
                         break;
                     case KeyEvent.VK_RIGHT:
-                        SDRaytracer.y_angle_factor++;
+                        y_angle_factor++;
                         break;
                     default:
                         redraw = false;
