@@ -60,7 +60,7 @@ public class SDRaytracer extends JFrame {
 
     private void profileRenderImage() {
         long end, start, time;
-
+        System.out.println("renderimage");
         renderImage(); // initialisiere Datenstrukturen, erster Lauf verf�lscht sonst Messungen
 
         for (int procs = 1; procs < 6; procs++) {

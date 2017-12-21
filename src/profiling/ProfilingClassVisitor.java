@@ -20,5 +20,7 @@ class ProfilingClassVisitor extends ClassVisitor implements Opcodes
 
         return new MyMethodVisitor(API_VERSION, mv, access, name, desc);
     }
+
+
 }
 
