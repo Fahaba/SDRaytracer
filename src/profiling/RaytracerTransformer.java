@@ -24,15 +24,11 @@ public class RaytracerTransformer implements ClassFileTransformer {
                 ProfilingClassVisitor profilingClassVisitor = new ProfilingClassVisitor(classWriter);
                 classReader.accept(profilingClassVisitor, ClassReader.EXPAND_FRAMES | ClassWriter.COMPUTE_FRAMES);
 
-
                 return classWriter.toByteArray();
             } catch (Exception e ) {
                 e.printStackTrace();
                 System.err.println(e.getMessage());
                 return classfileBuffer;
-            }
-            finally {
-                Holder.printCalcs();
             }
         }
         return classfileBuffer;
